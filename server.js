@@ -9,8 +9,6 @@ import FavColor from "./models/favColor.model.js";
 import PopDog from "./models/popDog.model.js";
 import DonutShare from "./models/donutShare.model.js";
 import Mvp from "./models/mvp.model.js";
-import { nextTick } from "process";
-
 // App Config
 const app = express();
 const port = process.env.PORT || 5000;
@@ -42,8 +40,8 @@ app.get("/piechart", async (req, res) => {
         res.status(200).send(data);
       }
     });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    console.log(error);
   }
 });
 
