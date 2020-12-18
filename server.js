@@ -33,9 +33,9 @@ app.get("/", (req, res) => {
 });
 
 // Pie Chart backend
-app.get("/piechart", (req, res) => {
+app.get("/piechart", async (req, res) => {
   try {
-    FavColor.find((err, data) => {
+    await FavColor.find((err, data) => {
       if (err) {
         res.status(500).send(err);
       } else {
