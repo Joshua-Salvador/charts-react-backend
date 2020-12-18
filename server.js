@@ -9,6 +9,7 @@ import FavColor from "./models/favColor.model.js";
 import PopDog from "./models/popDog.model.js";
 import DonutShare from "./models/donutShare.model.js";
 import Mvp from "./models/mvp.model.js";
+import { nextTick } from "process";
 
 // App Config
 const app = express();
@@ -33,13 +34,17 @@ app.get("/", (req, res) => {
 
 // Pie Chart backend
 app.get("/piechart", (req, res) => {
-  FavColor.find((err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
+  try {
+    FavColor.find((err, data) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(data);
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.post("/piechart", (req, res) => {
