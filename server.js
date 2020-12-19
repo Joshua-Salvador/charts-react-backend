@@ -18,12 +18,15 @@ const connectionUrl = `mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@clust
 app.use(express.json());
 app.use(cors());
 // DB config
-mongoose.connect(connectionUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+mongoose
+  .connect(connectionUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("Connected"))
+  .catch((err) => console.log(err));
 
 // API Endpoints
 
