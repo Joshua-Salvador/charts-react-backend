@@ -12,7 +12,7 @@ import Mvp from "./models/mvp.model.js";
 // App Config
 const app = express();
 const port = process.env.PORT || 5000;
-const connectionUrl = `mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.jaffd.mongodb.net/<chartDataDB>?retryWrites=true&w=majority`;
+const connectionUrl = `mongodb+srv://admin:admin@cluster0.jaffd.mongodb.net/<chartDataDB>?retryWrites=true&w=majority`;
 
 // Middleware
 app.use(express.json());
