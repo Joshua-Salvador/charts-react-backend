@@ -22,6 +22,7 @@ mongoose.connect(connectionUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  useFindAndModify: false,
 });
 
 // API Endpoints
@@ -31,18 +32,14 @@ app.get("/", (req, res) => {
 });
 
 // Pie Chart backend
-app.get("/piechart", async (req, res, next) => {
-  try {
-    await FavColor.find((err, data) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(200).send(data);
-      }
-    });
-  } catch (error) {
-    next(error);
-  }
+app.get("/piechart", (req, res) => {
+  FavColor.find((err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
 });
 
 app.post("/piechart", (req, res) => {
